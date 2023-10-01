@@ -1,3 +1,6 @@
+Download page for Windows and Linux with simple instructions is here.
+https://github.com/LinuxBeaver/Glass_Text_Gimp_Plugin/releases
+
 Glass Text Gimp Plugin (NOT TO BE CONFUSED WITH MY GLASS OVER TEXT PLUGIN THAT SHIPS WITH GEGL EFFECTS)
 This plugin ships with two other bonus plugins "glossy balloon and metallic" that are needed for it to work.
 They are quality plugins of their own. 
