@@ -16,15 +16,15 @@ https://github.com/LinuxBeaver/GEGL-glossy-balloon-text-styling
 https://github.com/LinuxBeaver/gegl-metallic---Make-people-metal-with-GEGL
 
 
-Location to put binaries, they do NOT go in the normal plugins folder.
+**Location to put binaries, they do NOT go in the normal plugins folder.**
 
-##Windows
+## Windows
  C:\Users\(USERNAME)\AppData\Local\gegl-0.4\plug-ins
  
-##Linux 
+## Linux 
  /home/(USERNAME)/.local/share/gegl-0.4/plug-ins
  
-##Linux (Flatpak includes Chromebook)
+## Linux (Flatpak includes Chromebook)
  /home/(USERNAME)/.var/app/org.gimp.GIMP/data/gegl-0.4/plug-ins
 
 Then restart Gimp and to go GEGL Operations to find the plugin. 
