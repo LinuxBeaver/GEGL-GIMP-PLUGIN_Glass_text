@@ -2,16 +2,17 @@ Glass Text Gimp Plugin (NOT TO BE CONFUSED WITH MY GLASS OVER TEXT PLUGIN THAT S
 This plugin ships with two other bonus plugins "glossy balloon and metallic" that are needed for it to work.
 They are quality plugins of their own. 
 
-Previews of this plugin
+**Previews of this plugin**
 ![image preview](previews/1.png)
 
 ![image preview](previews/2.png)
 
-Previews of the bonus plugins it ships with
+**Previews of the bonus plugins it ships with**
 ![image preview](previews/depend.png)
 Home page of bonus plugins (remember, these are full filters of their own)
 
 https://github.com/LinuxBeaver/GEGL-glossy-balloon-text-styling
+
 https://github.com/LinuxBeaver/gegl-metallic---Make-people-metal-with-GEGL
 
 
