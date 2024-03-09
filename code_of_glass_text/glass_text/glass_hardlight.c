@@ -22,7 +22,7 @@
 
 3. Users can test this filter without installing by pasting this syntax into Gimp's GEGL Graph filter.
 
-4. Fun fact, This is the first plugin of mine other then "gegl effects experimental to use glossy balloon as a dependency. 
+4. Fun fact, This is the first plugin of mine other then "Graphical Effects experimental to use glossy balloon as a dependency. 
 
 5. Fun Fact 2, when this filter was being developed it required the hard light blend mode.
 
@@ -110,7 +110,7 @@ static void attach (GeglOperation *operation)
                                   NULL);
 
   metallic = gegl_node_new_child (gegl,
-                                  "operation", "gegl:metallic", "liquid", 1.0, "light", 5.0, "smooth", 2, "blend", 3, 
+                                  "operation", "lb:metallic", "liquid", 1.0, "light", 5.0, "smooth", 2, "blend", 3, 
                                   NULL);
 
 /*This is Gimp's replace blend mode. If Gimp ever updates with new blend modes this number will very likely need to be changed to 61 or 63*/
@@ -138,7 +138,7 @@ replaceblendmode = gegl_node_new_child (gegl,
 
 
   gegl_node_link_many (input, mediansize, gbf, metallic, othergraph, idref, replaceblendmode, output, NULL);
-  gegl_node_connect_from (replaceblendmode, "aux", c2a, "output");
+  gegl_node_connect (replaceblendmode, "aux", c2a, "output");
   gegl_node_link_many (idref, c2a, NULL);
 
  gegl_operation_meta_redirect (operation, "size", mediansize, "radius"); 

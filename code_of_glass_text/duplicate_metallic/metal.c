@@ -417,13 +417,13 @@ switch (o->guichange) {
         break;
     case METAL_NO_COLOR:
   gegl_node_link_many (state->input, state->gaussian, state->repair2, state->over, state->solar, state->desat, state->smooth, state->light, state->output, NULL);
-  gegl_node_connect_from (state->over, "aux", state->opacity, "output");
+  gegl_node_connect (state->over, "aux", state->opacity, "output");
   gegl_node_link_many (state->input, state->invert, state->opacity, NULL);
         break;
     case METAL_COLOR:
   gegl_node_link_many (state->input, state->gaussian, state->repair2, state->dctsmooth, state->over, state->solar, state->desat, state->smooth, state->light, state->idref, state->hslcolor,  graphblendmode, state->repair, state->output, NULL);
-  gegl_node_connect_from (state->over, "aux", state->opacity, "output");
-  gegl_node_connect_from (state->hslcolor, "aux", state->color, "output");
+  gegl_node_connect (state->over, "aux", state->opacity, "output");
+  gegl_node_connect (state->hslcolor, "aux", state->color, "output");
   gegl_node_link_many (state->input, state->invert, state->opacity, NULL);
   gegl_node_link_many (state->idref,  state->color, NULL);
         break;
@@ -438,7 +438,7 @@ switch (o->guichange) {
         break;
     case OCT_2023_METAL_COLOR:
     gegl_node_link_many (state->input, state->gaussian, state->dctsmooth2, state->solar2, state->desatinverts,  state->idref, state->sl, state->output, NULL);
-  gegl_node_connect_from (state->sl, "aux", state->color2, "output");
+  gegl_node_connect (state->sl, "aux", state->color2, "output");
   gegl_node_link_many (state->idref,  state->color2,  NULL);
     }
 
@@ -448,13 +448,13 @@ switch (o->guichange) {
         break;
     case METAL_NO_COLOR:
   gegl_node_link_many (state->input, state->gaussian, state->repair2, state->over, state->solar, state->desat, state->smooth, state->light, state->smooth08, state->output, NULL);
-  gegl_node_connect_from (state->over, "aux", state->opacity, "output");
+  gegl_node_connect (state->over, "aux", state->opacity, "output");
   gegl_node_link_many (state->input, state->invert, state->opacity, NULL);
         break;
     case METAL_COLOR:
   gegl_node_link_many (state->input, state->gaussian, state->repair2,  state->dctsmooth, state->over, state->solar, state->desat, state->smooth, state->light, state->idref, state->hslcolor,  graphblendmode, state->smooth08, state->repair, state->output, NULL);
-  gegl_node_connect_from (state->over, "aux", state->opacity, "output");
-  gegl_node_connect_from (state->hslcolor, "aux", state->color, "output");
+  gegl_node_connect (state->over, "aux", state->opacity, "output");
+  gegl_node_connect (state->hslcolor, "aux", state->color, "output");
   gegl_node_link_many (state->input, state->invert, state->opacity, NULL);
   gegl_node_link_many (state->idref, state->color, NULL);
         break;
@@ -469,7 +469,7 @@ switch (o->guichange) {
         break;
     case OCT_2023_METAL_COLOR:
     gegl_node_link_many (state->input, state->gaussian, state->dctsmooth2, state->solar2, state->desatinverts, state->idref, state->sl, state->output, NULL);
-  gegl_node_connect_from (state->sl, "aux", state->color2, "output");
+  gegl_node_connect (state->sl, "aux", state->color2, "output");
   gegl_node_link_many (state->idref, state->color2,  NULL);
 }
 
@@ -508,7 +508,7 @@ operation_class->attach = attach;
 
   gegl_operation_class_set_keys (operation_class,
 /*If this filter ever breaks try changing the name gegl: or lb: to something else. This is because Gimp's team may want different name spaces.*/
-    "name",        "gegl:metallic",
+    "name",        "lb:metallic",
     "title",       _("Metallic"),
     "reference-hash", "45ed5656h28ff20fjf25sb2ac",
     "description", _("Add a metal effect to subjects and objects."),
