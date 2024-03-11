@@ -100,10 +100,10 @@ static void attach (GeglOperation *operation)
   output   = gegl_node_get_output_proxy (gegl, "output");
 
   mediansize = gegl_node_new_child (gegl,
-                                  "operation", "gegl:median-blur", "alpha-percentile", 3.0, "neighborhood", 0,
+                                  "operation", "gegl:median-blur", "alpha-percentile", 3.0, "neighborhood", 0, "abyss-policy",     GEGL_ABYSS_NONE,
                                   NULL);
 #define glossyballoonandfriends \
-" lb:glossy-balloon gaus=1 crop median-blur radius=0 gaussian-blur std-dev-x=1.5 std-dev-y=1.5 "\
+" lb:glossy-balloon gaus=1  median-blur  abyss-policy=none radius=0 gaussian-blur  abyss-policy=none  clip-extent=false std-dev-x=1.5 std-dev-y=1.5 "\
 
   gbf = gegl_node_new_child (gegl,
                                   "operation", "gegl:gegl", "string", glossyballoonandfriends,
@@ -118,14 +118,14 @@ replaceblendmode = gegl_node_new_child (gegl,
                                     "operation", "gimp:layer-mode", "layer-mode", 62, "composite-mode", 0,  "blend-space", 0, NULL);
 
 #define c2ameme \
-" color-to-alpha color=#9d9d9d median-blur radius=0 "\
+" color-to-alpha color=#9d9d9d median-blur abyss-policy=none radius=0 "\
 
   c2a = gegl_node_new_child (gegl,
                                   "operation", "gegl:gegl", "string", c2ameme,
                                   NULL);
 
 #define other \
-" opacity value=4 median-blur radius=0 "\
+" opacity value=4 median-blur abyss-policy=none radius=0 "\
 
                                
   othergraph = gegl_node_new_child (gegl,
