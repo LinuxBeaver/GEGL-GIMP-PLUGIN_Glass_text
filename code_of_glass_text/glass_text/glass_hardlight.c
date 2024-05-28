@@ -16,27 +16,27 @@
  * Copyright 2006 Øyvind Kolås <pippin@gimp.org>
  * Beaver 2023, Glass Text with Hard Light
 
-1. DO NOT CONFUSE THIS PLUGIN WITH "GLASS OVER TEXT" another plugin of mine. 
+1. DO NOT CONFUSE THIS PLUGIN WITH "GLASS OVER TEXT" another plugin of mine.
 
 2. This plugin requires two other plugins to work (glossy balloon and metallic) don't worry, it ships with them.
 
 3. Users can test this filter without installing by pasting this syntax into Gimp's GEGL Graph filter.
 
-4. Fun fact, This is the first plugin of mine other then "Graphical Effects experimental to use glossy balloon as a dependency. 
+4. Fun fact, This is the first plugin of mine other then "Graphical Effects experimental to use glossy balloon as a dependency.
 
 5. Fun Fact 2, when this filter was being developed it required the hard light blend mode.
 
 
 median-blur radius=7 alpha-percentile=3
 lb:glossy-balloon gaus=1 crop median-blur radius=0 gaussian-blur std-dev-x=1.5 std-dev-y=1.5
-metallic  
-liquid=1.0900000000000001 
-  solar1=2.7000000000000002 
-solar2=4.0679999999999996 
- solar3=0.159 
+metallic
+liquid=1.0900000000000001
+  solar1=2.7000000000000002
+solar2=4.0679999999999996
+ solar3=0.159
  light=5
- smooth=2 
-blend=graph4 
+ smooth=2
+blend=graph4
 opacity value=4 median-blur radius=0
 
 id=1 gimp:layer-mode layer-mode=replace opacity=1.00 aux=[ ref=1 color-to-alpha color=#9d9d9d   ]
@@ -72,8 +72,8 @@ property_double (glass2, _("Limited Glass control 2"), 4.1)
 
 property_double (glass3, _("Limited Glass control 3"), 0.2)
    description (_("A small portion of alien map's blue channel solarization"))
-   value_range (0.1, 0.2)
-   ui_range    (0.1, 0.2)
+   value_range (0.1, 0.3)
+   ui_range    (0.1, 0.3)
   ui_steps      (0.1, 0.50)
 
 property_double (hardlightmode, _("0% for Hard light blend mode"), 0.8)
@@ -110,7 +110,7 @@ static void attach (GeglOperation *operation)
                                   NULL);
 
   metallic = gegl_node_new_child (gegl,
-                                  "operation", "lb:metallic", "liquid", 1.0, "light", 5.0, "smooth", 2, "blend", 3, 
+                                  "operation", "lb:metallic", "liquid", 1.0, "light", 5.0, "smooth", 2, "blend", 3,
                                   NULL);
 
 /*This is Gimp's replace blend mode. If Gimp ever updates with new blend modes this number will very likely need to be changed to 61 or 63*/
@@ -127,7 +127,7 @@ replaceblendmode = gegl_node_new_child (gegl,
 #define other \
 " opacity value=4 median-blur abyss-policy=none radius=0 "\
 
-                               
+
   othergraph = gegl_node_new_child (gegl,
                                   "operation", "gegl:gegl", "string", other,
                                   NULL);
@@ -141,11 +141,11 @@ replaceblendmode = gegl_node_new_child (gegl,
   gegl_node_connect (replaceblendmode, "aux", c2a, "output");
   gegl_node_link_many (idref, c2a, NULL);
 
- gegl_operation_meta_redirect (operation, "size", mediansize, "radius"); 
- gegl_operation_meta_redirect (operation, "glass1", metallic, "solar1"); 
- gegl_operation_meta_redirect (operation, "glass2", metallic, "solar2"); 
- gegl_operation_meta_redirect (operation, "glass3", metallic, "solar3"); 
- gegl_operation_meta_redirect (operation, "hardlightmode", replaceblendmode, "opacity"); 
+ gegl_operation_meta_redirect (operation, "size", mediansize, "radius");
+ gegl_operation_meta_redirect (operation, "glass1", metallic, "solar1");
+ gegl_operation_meta_redirect (operation, "glass2", metallic, "solar2");
+ gegl_operation_meta_redirect (operation, "glass3", metallic, "solar3");
+ gegl_operation_meta_redirect (operation, "hardlightmode", replaceblendmode, "opacity");
 
 /*hardlight mode works by setting the replace blend mode to 0 opacity, thus removing the "color to alpha" Thus making a "glass text thing" that requires blending with hard light.
 Using Color to alpha's " opacity-threshold" to do the same thing works but creates a never before seen bug that even median blur at zero radius can't solve.*/
