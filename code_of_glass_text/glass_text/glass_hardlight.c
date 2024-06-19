@@ -60,7 +60,7 @@ property_int (size, _("Reverse Size control"), 3)
 
 property_double (glass1, _("Limited Glass control 1"), 2.5)
    description (_("A small portion of alien map's red channel solarization"))
-   value_range (2.5, 2.9)
+   value_range (2.5, 3.0)
    ui_range    (2.5, 2.9)
   ui_steps      (0.1, 0.50)
 
@@ -72,7 +72,7 @@ property_double (glass2, _("Limited Glass control 2"), 4.1)
 
 property_double (glass3, _("Limited Glass control 3"), 0.2)
    description (_("A small portion of alien map's blue channel solarization"))
-   value_range (0.1, 0.3)
+   value_range (0.1, 1.0)
    ui_range    (0.1, 0.3)
   ui_steps      (0.1, 0.50)
 
